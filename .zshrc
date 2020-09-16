@@ -145,7 +145,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="/usr/local/nginx/sbin:$PATH"
 
 # julia
-export PATH="/home/ryu/oss/julia:$PATH"
+export PATH="$HOME/oss/julia:$PATH"
 
 # go
 export PATH=$PATH:/usr/local/go/bin
