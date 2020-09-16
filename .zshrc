@@ -163,7 +163,7 @@ alias g11='g++ -std=c++11'
 # lightline
 export TERM=xterm-256color
 
-# ruby gems
+# ruby gems for jekyll
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"

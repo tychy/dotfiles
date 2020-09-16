@@ -1,0 +1,11 @@
+[alias]
+    st = status
+    ci = commit
+    dc = diff --cached
+[user]
+    email = a2sin2a2ko@kyoto-y.work
+	name = Ryu Yamada
+[core]
+	editor = nvim
+[credential]
+	helper = store
