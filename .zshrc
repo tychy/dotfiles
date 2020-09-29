@@ -168,3 +168,4 @@ export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
 alias buildj="bundle exec jekyll serve"
+ export PATH=~/.npm-global/bin:$PATH
