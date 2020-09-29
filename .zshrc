@@ -51,6 +51,16 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
+# dircolor
+case ${OSTYPE} in
+  darwin*)
+    # ここに Mac 向けの設定
+    export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+    ;;
+  linux*)
+    # ここに Linux 向けの設定
+    ;;
+esac
 eval "$(dircolors -b)"
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
@@ -168,4 +178,8 @@ export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
 alias buildj="bundle exec jekyll serve"
- export PATH=~/.npm-global/bin:$PATH
+export PATH=~/.npm-global/bin:$PATH
+# nodejs
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
