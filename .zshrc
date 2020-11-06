@@ -56,6 +56,7 @@ case ${OSTYPE} in
   darwin*)
     # ここに Mac 向けの設定
     export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+    export PATH=$PATH:/usr/local/bin
     ;;
   linux*)
     # ここに Linux 向けの設定
@@ -183,3 +184,6 @@ export PATH=~/.npm-global/bin:$PATH
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# direnv
+eval "$(direnv hook zsh)"
