@@ -154,6 +154,10 @@ export PATH="$HOME/.poetry/bin:$PATH"
 
 # nginx
 export PATH="/usr/local/nginx/sbin:$PATH"
+# if os == linux gnu then sudoに現在のパスを渡す
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    alias sudo='sudo env PATH=$PATH'
+fi
 
 # julia
 export PATH="$HOME/oss/julia:$PATH"
