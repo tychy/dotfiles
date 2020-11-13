@@ -194,3 +194,6 @@ export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
 # direnv
 eval "$(direnv hook zsh)"
+
+# git
+alias g='git'
