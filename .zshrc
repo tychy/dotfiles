@@ -24,7 +24,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 # エディタをvimに設定
-export EDITOR=vim
+export EDITOR=nvim
 
 # dir stack
 DIRSTACKSIZE=100
@@ -203,7 +203,7 @@ function with_echo() {
    $@
 }
 function cpp_compile() {
-    with_echo g++ -std=c++14 -g -O0 -o $1 $2
+    with_echo g++ -std=c++14 -g -fsanitize=undefined -Wno-deprecated -Wno-unneeded-internal-declaration -O0 -o $1 $2
 }
 
 function cpp_run() {
