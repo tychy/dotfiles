@@ -2,6 +2,16 @@
     st = status
     ci = commit
     dc = diff --cached
+    co = checkout
+    cob = checkout -b
+    br = branch
+    del = branch -d
+    cm = commit
+    df = diff
+    fe = fetch --prune
+    rb = rebase -i
+    po = push origin HEAD
+    sh = stash
 [user]
     email = a2sin2a2ko@kyoto-y.work
 	name = Ryu Yamada

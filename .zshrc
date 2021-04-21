@@ -228,3 +228,6 @@ function cpp_run() {
   fi
 }
 alias -s cpp=cpp_run
+
+# peco
+source "$GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh"
