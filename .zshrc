@@ -1,5 +1,3 @@
-# Set up the prompt
-
 export LANG=ja_JP.UTF-8
 
 autoload -Uz promptinit
@@ -168,6 +166,18 @@ export GOPATH=$HOME/go
 
 # nvim
 export XDG_CONFIG_HOME="$HOME/.config"
+case ${OSTYPE} in
+  darwin*)
+    # ここに Mac 向けの設定
+    export LIB_CLANG="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
+    export DIR_CLANG="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang"
+    ;;
+  linux*)
+    # ここに Linux 向けの設定
+    export LIB_CLANG="/usr/lib/libclang.so.10"
+    export DIR_CLANG="/usr/include/clang"
+    ;;
+esac
 
 # tex
 alias lmk='latexmk -pvc'
@@ -182,6 +192,7 @@ export TERM=xterm-256color
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
+
 alias buildj="bundle exec jekyll serve"
 export PATH=~/.npm-global/bin:$PATH
 # nodejs
@@ -202,6 +213,8 @@ function with_echo() {
     echo $@
    $@
 }
+
+# cpp run
 function cpp_compile() {
     with_echo g++ -std=c++14 -g -fsanitize=undefined -Wno-deprecated -Wno-unneeded-internal-declaration -O0 -o $1 $2
 }
@@ -229,5 +242,19 @@ function cpp_run() {
 }
 alias -s cpp=cpp_run
 
-# peco
-source "$GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh"
+# todoist
+case ${OSTYPE} in
+  darwin*)
+    # ここに Mac 向けの設定
+    source $(brew --prefix)/share/zsh/site-functions/_todoist_peco
+    ;;
+  linux*)
+    # ここに Linux 向けの設定
+    # peco
+    source "$GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh"
+    ;;
+esac
+
+#root
+export PATH="$HOME/XRPIX_Analysis_Software_EventDriven_v1/bin:$PATH"
+
