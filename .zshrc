@@ -6,9 +6,6 @@ prompt adam1
 
 setopt histignorealldups sharehistory
 
-# Use emacs keybindings even if our EDITOR is set to vi
-bindkey -v
-
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
 SAVEHIST=1000
@@ -242,19 +239,4 @@ function cpp_run() {
 }
 alias -s cpp=cpp_run
 
-# todoist
-case ${OSTYPE} in
-  darwin*)
-    # ここに Mac 向けの設定
-    source $(brew --prefix)/share/zsh/site-functions/_todoist_peco
-    ;;
-  linux*)
-    # ここに Linux 向けの設定
-    # peco
-    source "$GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh"
-    ;;
-esac
-
-#root
-export PATH="$HOME/XRPIX_Analysis_Software_EventDriven_v1/bin:$PATH"
-
+[ -f $HOME/.zshrc_`uname` ] && . $HOME/.zshrc_`uname`

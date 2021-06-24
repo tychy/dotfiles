@@ -1,0 +1,36 @@
+
+# todoist
+case ${OSTYPE} in
+  darwin*)
+    # ここに Mac 向けの設定
+    source $(brew --prefix)/share/zsh/site-functions/_todoist_peco
+    ;;
+  linux*)
+    # ここに Linux 向けの設定
+    # peco
+    source "$GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh"
+    ;;
+esac
+
+#root
+export PATH="$HOME/XRPIX_Analysis_Software_EventDriven_v1/bin:$PATH"
+
+# SAS
+export SAS_PERL="/usr/bin/perl"
+export PERL="/usr/bin/perl"
+export CC=/usr/local/bin/gcc-11
+export CXX=/usr/local/bin/g++-11
+export FC=/usr/local/bin/gfortran-11
+export ASTRO=$HOME/research/astro
+export HEADAS=$HOME/research/heasoft-6.28/x86_64-apple-darwin20.1.0
+. $HEADAS/BUILD_DIR/headas-init.sh
+export SAS_CCFPATH=${ASTRO}/XMM_ccf
+export SAS_DIR=${ASTRO}/sas/xmmsas_20210317_1624
+alias xmmdata="cd ${ASTRO}/XMM_data/"
+alias sasset="source ${SAS_DIR}/setsas.sh"
+export PATH=/usr/local/bin:$PATH
+export DYLD_LIBRARY_PATH=/usr/local/opt/gcc/lib/gcc/11:${DYLD_LIBRARY_PATH}
+alias ds9="/Users/yamadaryuu/research/astro/ds9.darwinbigsur.8.2.1/ds9"
+
+alias kyo="cd $HOME/code/2021CODE"
+pokemon 
