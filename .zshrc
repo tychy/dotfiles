@@ -141,12 +141,6 @@ alias pbcopy='xsel --clipboard --input'
 alias kus='fcitx-imlist -s us'
 alias kmozc='fcitx-imlist -s mozc'
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-export PATH="$HOME/.poetry/bin:$PATH"
-
 # nginx
 export PATH="/usr/local/nginx/sbin:$PATH"
 # if os == linux gnu then sudoに現在のパスを渡す
@@ -178,9 +172,6 @@ esac
 
 # tex
 alias lmk='latexmk -pvc'
-
-# cpp
-alias g11='g++ -std=c++11'
 
 # lightline
 export TERM=xterm-256color
@@ -238,5 +229,8 @@ function cpp_run() {
   fi
 }
 alias -s cpp=cpp_run
+export LOG_DIR=$HOME/log
+#[ -f $HOME/.zshrc_`uname` ] && . $HOME/.zshrc_`uname`
 
-[ -f $HOME/.zshrc_`uname` ] && . $HOME/.zshrc_`uname`
+# asdf
+. /usr/local/opt/asdf/asdf.sh

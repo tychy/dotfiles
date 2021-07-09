@@ -17,6 +17,7 @@
 	name = Ryu Yamada
 [core]
 	editor = nvim
+	ignorecase = true
 [credential]
 	helper = store
 [filter "lfs"]

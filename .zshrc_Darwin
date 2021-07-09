@@ -1,7 +1,6 @@
 
 # todoist
-case ${OSTYPE} in
-  darwin*)
+case ${OSTYPE} in darwin*)
     # ここに Mac 向けの設定
     source $(brew --prefix)/share/zsh/site-functions/_todoist_peco
     ;;
@@ -29,8 +28,9 @@ export SAS_DIR=${ASTRO}/sas/xmmsas_20210317_1624
 alias xmmdata="cd ${ASTRO}/XMM_data/"
 alias sasset="source ${SAS_DIR}/setsas.sh"
 export PATH=/usr/local/bin:$PATH
-export DYLD_LIBRARY_PATH=/usr/local/opt/gcc/lib/gcc/11:${DYLD_LIBRARY_PATH}
-alias ds9="/Users/yamadaryuu/research/astro/ds9.darwinbigsur.8.2.1/ds9"
+#export DYLD_LIBRARY_PATH=/usr/local/opt/gcc/lib/gcc/11:${DYLD_LIBRARY_PATH}
+alias ds9="${ASTRO}/ds9.darwinbigsur.8.2.1/ds9"
 
+# アドホックな設定
 alias kyo="cd $HOME/code/2021CODE"
 pokemon 
