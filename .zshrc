@@ -115,6 +115,10 @@ alias g='git'
 # Path
 # -----------------------------
 
+# mac
+export PATH=$PATH:/opt/homebrew/bin/
+export PATH=$PATH:/usr/local/bin
+
 # nginx
 export PATH="/usr/local/nginx/sbin:$PATH"
 
