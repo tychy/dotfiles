@@ -22,3 +22,5 @@
     ignorecase = true
 [credential]
     helper = store
+[pull]
+    rebase = true
