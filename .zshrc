@@ -11,6 +11,7 @@ export LANG=ja_JP.UTF-8
 autoload -Uz promptinit
 promptinit
 prompt adam1
+
 # 色を使用
 autoload -Uz colors ; colors
 
@@ -87,6 +88,8 @@ setopt auto_param_keys
 # beep を無効にする
 setopt no_beep
 
+# enable auto jump
+eval "$(jump shell zsh)"
 
 # -----------------------------
 # Alias
@@ -148,10 +151,8 @@ case ${OSTYPE} in
     ;;
 esac
 
-
 # direnv
 eval "$(direnv hook zsh)"
-
 
 # cpp
 function with_echo() {
@@ -187,4 +188,4 @@ function cpp_run() {
 
 alias -s cpp=cpp_run
 
-#eval "$(jump shell zsh)"
+
