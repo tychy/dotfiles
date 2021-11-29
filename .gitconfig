@@ -1,27 +1,24 @@
 [alias]
     st = status
     ci = commit
+    df = diff
     dc = diff --cached
     co = checkout
     cob = checkout -b
     br = branch
     del = branch -d
     cm = commit
-    df = diff
     fe = fetch --prune
     rb = rebase -i
     po = push origin HEAD
     sh = stash
+    addi = !git add -i
+    lg = !git log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [user]
     email = a2sin2a2ko@kyoto-y.work
-	name = Ryu Yamada
+    name = Ryu Yamada
 [core]
-	editor = nvim
-	ignorecase = true
+    editor = nvim
+    ignorecase = true
 [credential]
-	helper = store
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    helper = store
