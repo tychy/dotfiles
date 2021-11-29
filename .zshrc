@@ -14,7 +14,6 @@ prompt adam1
 # 色を使用
 autoload -Uz colors ; colors
 
-
 # -----------------------------
 # History
 # -----------------------------
@@ -188,3 +187,4 @@ function cpp_run() {
 
 alias -s cpp=cpp_run
 
+#eval "$(jump shell zsh)"
