@@ -161,7 +161,7 @@ function with_echo() {
 }
 
 function cpp_compile() {
-    with_echo g++ -std=c++14 -g -fsanitize=undefined -Wno-deprecated -Wno-unneeded-internal-declaration -O0 -o $1 $2
+    with_echo g++-11 -std=c++14 -g -fsanitize=undefined -Wno-deprecated -Wno-unneeded-internal-declaration -O0 -o $1 $2
 }
 
 function cpp_run() {
@@ -188,4 +188,7 @@ function cpp_run() {
 
 alias -s cpp=cpp_run
 
-
+## mikanos
+export PATH=/usr/local/opt/llvm/bin:$PATH
+export PATH=/usr/local/opt/binutils/bin:$PATH
+export PATH="/usr/local/sbin:$PATH"
