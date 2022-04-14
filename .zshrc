@@ -124,7 +124,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
 # mac
-export PATH=$PATH:/usr/local/bin
+# export PATH=$PATH:/usr/local/bin
 
 # nginx
 export PATH="/usr/local/nginx/sbin:$PATH"
@@ -189,6 +189,7 @@ function cpp_run() {
 alias -s cpp=cpp_run
 
 ## mikanos
-export PATH=/usr/local/opt/llvm/bin:$PATH
-export PATH=/usr/local/opt/binutils/bin:$PATH
 export PATH="/usr/local/sbin:$PATH"
+
+alias arm="env /usr/bin/arch -arm64 /bin/zsh --login"
+alias intel="env /usr/bin/arch -x86_64 /bin/zsh --login"
