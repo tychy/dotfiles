@@ -117,12 +117,6 @@ alias g='git'
 # Path
 # -----------------------------
 
-# Python
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-
-
 # nginx
 export PATH="/usr/local/nginx/sbin:$PATH"
 
