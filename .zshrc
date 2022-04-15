@@ -161,3 +161,7 @@ auth() {
   gcloud auth application-default set-quota-project merpay-alcazar-jp
 }
 alias auth='auth()'
+
+function set-kube-namespace() {
+    kubectl config set-context $(kubectl config current-context) --namespace $(find $GOPATH/src/microservices-terraform/terraform/microservices -name backend.tf | awk -F/ '{ if($(NF-1) == "development") {print $(NF-2)"-dev"} else if($(NF-1) == "production") {print $(NF-2)"-prod"} }' | sort -u | peco)
+}
