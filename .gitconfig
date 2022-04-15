@@ -24,3 +24,6 @@
     helper = store
 [pull]
     rebase = true
+[include]
+    # ln -s .gitconfig_work ~/.gitconfig_os
+    path = ~/.gitconfig_os

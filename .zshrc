@@ -118,20 +118,15 @@ alias g='git'
 # -----------------------------
 
 # Python
-#
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
-# mac
-# export PATH=$PATH:/usr/local/bin
 
 # nginx
 export PATH="/usr/local/nginx/sbin:$PATH"
 
 # go
-#export PATH=$PATH:/usr/local/go/bin
-#export GOPATH=$HOME/go
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin 
@@ -151,45 +146,9 @@ case ${OSTYPE} in
     ;;
 esac
 
-# direnv
-eval "$(direnv hook zsh)"
+## google-cloud-sdk
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 
-# cpp
-function with_echo() {
-    echo $@
-   $@
-}
-
-function cpp_compile() {
-    with_echo g++-11 -std=c++14 -g -fsanitize=undefined -Wno-deprecated -Wno-unneeded-internal-declaration -O0 -o $1 $2
-}
-
-function cpp_run() {
-  cpp_file=$1
-  exe_file=${cpp_file:0:-4}
-  shift
-
-  if [ -s $cpp_file ]; then
-    if [ ! -f $exe_file ]; then
-      cpp_compile $exe_file $cpp_file && ./$exe_file $@
-    else
-      cpp_date=`date -r $cpp_file +%s`
-      exe_date=`date -r $exe_file +%s`
-      if [ $cpp_date -gt $exe_date ]; then
-        cpp_compile $exe_file $cpp_file && ./$exe_file $@
-      else
-        ./$exe_file $@
-      fi
-    fi
-  else
-    echo $cpp_file is empty
-  fi
-}
-
-alias -s cpp=cpp_run
-
-## mikanos
-export PATH="/usr/local/sbin:$PATH"
-
-alias arm="env /usr/bin/arch -arm64 /bin/zsh --login"
-alias intel="env /usr/bin/arch -x86_64 /bin/zsh --login"
+# k8s
+alias k=kubectl
