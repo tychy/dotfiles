@@ -162,6 +162,41 @@ auth() {
 }
 alias auth='auth()'
 
+alias arm="env /usr/bin/arch -arm64 /bin/zsh --login"
+alias intel="env /usr/bin/arch -x86_64 /bin/zsh --login"
+
 function set-kube-namespace() {
     kubectl config set-context $(kubectl config current-context) --namespace $(find $GOPATH/src/microservices-terraform/terraform/microservices -name backend.tf | awk -F/ '{ if($(NF-1) == "development") {print $(NF-2)"-dev"} else if($(NF-1) == "production") {print $(NF-2)"-prod"} }' | sort -u | peco)
 }
+
+# switch-arch
+typeset -U path PATH
+path=(
+    /opt/homebrew/opt/llvm/bin
+    /usr/local/opt/llvm/bin
+	/opt/homebrew/bin(N-/)
+	/usr/local/bin(N-/)
+    /opt/homebrew/opt/binutils/bin
+    /usr/local/opt/binutils/bin
+	$path
+)
+
+if (( $+commands[sw_vers] )) && (( $+commands[arch] )); then
+	[[ -x /usr/local/bin/brew ]] && alias brew="arch -arch x86_64 /usr/local/bin/brew"
+	alias x64='exec arch -x86_64 /bin/zsh'
+	alias a64='exec arch -arm64e /bin/zsh'
+	switch-arch() {
+		if  [[ "$(uname -m)" == arm64 ]]; then
+			arch=x86_64
+            export PATH=/usr/local/opt/llvm/bin:$PATH
+            export PATH=/usr/local/opt/binutils/bin:$PATH
+		elif [[ "$(uname -m)" == x86_64 ]]; then
+			arch=arm64e
+            export PATH=/opt/homebrew/opt/llvm/bin:$PATH
+            export PATH=/opt/homebrew/sbin:/opt/homebrew/opt/binutils/bin:$PATH
+		fi
+		exec arch -arch $arch /bin/zsh
+	}
+fi
+
+setopt magic_equal_subst
