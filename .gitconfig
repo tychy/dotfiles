@@ -20,6 +20,7 @@
 [core]
     editor = nvim
     ignorecase = true
+	excludesfile = /Users/ryuyama/.gitignore
 [credential]
     helper = store
 [pull]

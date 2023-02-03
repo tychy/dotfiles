@@ -149,6 +149,9 @@ case ${OSTYPE} in
     ;;
 esac
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # -----------------------------
 # Merpay
 # -----------------------------
@@ -168,11 +171,12 @@ alias kn='f() { [ "$1" ] && kubectl config set-context --current --namespace $1 
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
-auth() {
+function auth() {
   gcloud auth login --update-adc
+# gcloud auth login --update-adc --enable-gdrive-access
+# gcloud auth application-default login --scopes "https://www.googleapis.com/auth/spreadsheets,https://www.googleapis.com/auth/userinfo.email,https://www.googleapis.com/auth/cloud-platform,openid"
   gcloud auth application-default set-quota-project merpay-alcazar-jp
 }
-alias auth='auth()'
 
 alias arm="env /usr/bin/arch -arm64 /bin/zsh --login"
 alias intel="env /usr/bin/arch -x86_64 /bin/zsh --login"
@@ -180,6 +184,12 @@ alias intel="env /usr/bin/arch -x86_64 /bin/zsh --login"
 function set-kube-namespace() {
     kubectl config set-context $(kubectl config current-context) --namespace $(find $GOPATH/src/microservices-terraform/terraform/microservices -name backend.tf | awk -F/ '{ if($(NF-1) == "development") {print $(NF-2)"-dev"} else if($(NF-1) == "production") {print $(NF-2)"-prod"} }' | sort -u | peco)
 }
+
+function get-proto(){
+	GOPRIVATE=github.com/kouzoh go get -u github.com/kouzoh/platform-client-go@$1
+}
+
+alias sp="spanner-cli -p merpay-alcazar-jp -i merpay-alcazar-jp3 -d ryuyama-dev"
 
 # -----------------------------
 # M1 Mac
@@ -217,3 +227,5 @@ if [[ "$(uname)" == 'Darwin' ]]; then
   
   setopt magic_equal_subst
 fi
+
+
